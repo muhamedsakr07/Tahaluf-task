@@ -226,7 +226,7 @@ function tahaluf_get_post_excerpt( $limit, $post = null ) {
 function weichie_load_more() {
   $ajaxposts = new WP_Query([
     'post_type' => 'post',
-    'posts_per_page' => 5,
+    'posts_per_page' => -1,
     'orderby' => 'date',
     'order' => 'ASC',
     'paged' =>$_POST['paged'],
