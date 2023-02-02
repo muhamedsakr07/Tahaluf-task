@@ -22,6 +22,7 @@ get_header();
 			</header><!-- .page-header -->
 			<?php
 			/* Start the Loop */
+		echo '<div class="loop-cat">';
 			while ( have_posts() ) :
 				the_post();
 
@@ -30,8 +31,8 @@ get_header();
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
 				 */
-				get_template_part( 'template-parts/content', get_post_type() );
-
+				
+				get_template_part( 'template-parts/blog-grid' );
 			endwhile;
 
 			the_posts_navigation();
@@ -41,6 +42,8 @@ get_header();
 			get_template_part( 'template-parts/content', 'none' );
 
 		endif;
+	echo '</div>';
+
 		?>
 
 	</main><!-- #main -->

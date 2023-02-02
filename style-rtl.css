@@ -78,6 +78,18 @@ body {
 main {
 	display: block;
 }
+@media only screen and (max-width: 600px) {
+.main-navigation .menu-menu-en-container {
+    background: #fff !important;
+    width: 100% !important;
+    position: absolute;
+    transition: 0.4s;
+    top: 117px;
+    left: 0;
+    padding-left: 21px;
+}
+}
+
 
 /**
  * Correct the font size and margin on `h1` elements within `section` and

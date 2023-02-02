@@ -18,6 +18,7 @@ get_header();
 	<main id="primary" class="site-main">
 
       <?php  
+	   $catSlug = $_POST['cat'];
       if(!isset($_POST['submit'])){
           $args = array(
             'post_type'      => 'post',
@@ -37,9 +38,9 @@ get_header();
                     'after' => @$_POST['fromDate'],
                     'before' => @$_POST['toDate'],
                     'inclusive' => true,
-                ),
-                    'cat' => @$_POST['toDate'],
-            )
+                )
+                  
+            ), 'category_name' => @$catSlug,
         );
       }
       
@@ -54,9 +55,9 @@ get_header();
     <div class="container">
         <div id="mySidebar" class="sidebar">
           <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-         <p> Filter By Category </p>
          <form method="POST" class="filter-form">
-          <select name="cat">
+             <p> Filter By Category </p>
+          <select name="cat" class="filter-select">
                <?php 
                     $categories = get_categories();
                     foreach($categories as $category) {?>
@@ -69,16 +70,44 @@ get_header();
           <p>TO</p>
            <input type="text" name="toDate" id="toDate" required value=""></p>
            <input class="reset" type="reset" required value="Clear Filters"/>
-           <input type="submit" name="submit" value="submit" />
+           <input type="submit" name="submit" class="apply-filter" value="Apply Filter" />
         </form>
          
         </div>
-       
+        
+                    
 
     <div id="main">
-      <button class="openbtn" onclick="openNav()"> Filter</button>  
+       <?php if(!isset($_POST['submit'])){?>
+      
+		<?php if(!isset($_POST['submit'])){?>
+		<div class="content card card-title" style="padding:0 20px">
+			<h2>Welcome To</h2>
+			<h1 style="color:#D3202E">Tahaluf task</h1>
+			<p>List of Posts 2023</p>
+			<button class="openbtn" onclick="openNav()">Modify Filter</button>
+			<?php } ?>
+		</div>
+      <?php } ?>
+         
     </div>
+    <?php if (isset($_POST['cat'])){?>
+          <div class="filter-meta">
+           <span><?php echo @$_POST['cat']; ?></span>
+           <span><?php echo @$_POST['fromDate']; ?></span>
+           <span><?php echo @$_POST['toDate']; ?></span>
+        </div>
+         <?php } ?> 
                 <div class="new-loading">
+                    <?php if(isset($_POST['submit'])){?>
+                    <div class="content card card-title" style="padding:0 20px">
+                        <h2>Welcome To</h2>
+                        <h1 style="color:#D3202E">Tahaluf task</h1>
+                        <p>List of Postst 2023</p>
+                        <button class="openbtn" style="cursor:unset;">Filter Results</button>
+                    </div>
+                  <?php } ?>
+					                    
                     <?php while ( $query->have_posts() ) : $query->the_post();?>
                         <?php get_template_part( 'template-parts/blog-grid' );?>
                     <?php endwhile; ?>

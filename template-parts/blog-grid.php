@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card <?php if(@$_POST['cat']) {echo 'first-card';}?>">
  <div class="card-header">
     <h5 class="card-title"><a href="<?php the_permalink(); ?>"><?php echo the_title(); ?></a></h5>
     <span><?php tahaluf_task_posted_on() ?></span>
