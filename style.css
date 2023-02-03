@@ -1142,6 +1142,15 @@ textarea {
     margin: 10px 16px;
     text-decoration: none;
 }
+.no-results svg {
+	width:600px !important
+}
+.no-results {
+   	display: flex;
+    flex-direction: column;
+    align-items: center;
+	  padding:0 50px;
+}
 
 .current-menu-item {
 	background:#A70000;
@@ -1239,6 +1248,15 @@ textarea {
 		font-weight:700;
 		color:#A70000
 	}
+	.no-results svg {
+	width:300px !important;
+}
+	.no-results {
+		display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 50px;
+	}
 	.filter-meta {
 	display: flex;
     justify-content: center !important;
@@ -1285,4 +1303,11 @@ textarea {
 	border:1px solid #D3202E !important;
 	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 
+}
+.page-title {
+    text-align: center !important;
+    color: #D3202E;
+}
+.no-results .page-content {
+    text-align: center;
 }
